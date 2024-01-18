@@ -1,0 +1,270 @@
+
+*{
+    box-sizing: border-box;
+    font-family: Montserrat;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(246, 248, 255);
+}
+
+.outter{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    /* margin: 0 auto; */
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 100%;
+    padding: 2rem;
+}
+.right{
+    width: 70vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+.repos{
+    padding: 1rem;
+    display: grid;
+    width: 100%;
+    height: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 1rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    background-color: white;
+    border-radius: 0.5rem;
+    /* border: 2px solid black; */
+    box-shadow: 0px 0px 10px 2px #E5E4E2;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    border: 1px solid gray;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+.name{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding:1rem;
+    font-weight: bold;
+    color: blue;
+}
+.desc{
+    padding: 0 1rem;
+    overflow: hidden;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+
+}
+.topics{
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.topics span{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    font-size: 12px;
+    margin: 2px;
+    min-width: 3rem;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 100vw;
+    background-color: blue;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+
+.upper{
+    height: 60%;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    background-color: white;
+    padding: 0.2rem 1rem;
+    padding-right: 0;
+}
+
+.search{
+    height: 100%;
+    border: none;
+    width: 15%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    align-items: center;
+}
+
+.username{
+    height: 100%;
+    width: 70%;
+    border: none;
+    outline: none;
+}
+
+.username:focus{
+    border: none;
+    outline: none;
+}
+
+.pages{
+    height: 60%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prev,.next{
+    width: 4rem;
+    font-size: 1.2rem;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    border-radius: 100vw;
+    padding: 3px;
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.pageno{
+    font-size: 1.1rem;
+    width: 2rem;
+    margin: 0 4px;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profile{
+    width: 100%;
+    height: 80%;
+    border-radius: 0.5rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 0px 0px 10px 2px #E5E4E2;
+
+}
+
+.profile_data{
+    width: 100%;
+    height: 40%;
+    display: flex;
+
+}
+
+.img_left{
+    width: 40%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_left img{
+    width: 80%;
+    border-radius: 50%;
+}
+
+.name_right{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    flex-wrap: wrap;
+}
+
+.other_data{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+#name{
+    font-size: 1.3rem;
+}
+#id{
+    font-size: 1rem;
+    color: blue;
+}
+#joined{
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: gray;
+
+}
+
+#desc{
+    color: gray;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.id_data{
+    font-size: 1.1rem;
+    color: gray;
+
+}
+
+#location{
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    color: gray;
+
+}
+
+#location svg{
+    margin-right: 0.5rem;
+}
