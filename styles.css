@@ -236,6 +236,8 @@ body{
 #id{
     font-size: 1rem;
     color: blue;
+    cursor: pointer;
+    text-decoration: none;
 }
 #joined{
     font-size: 1rem;
@@ -246,18 +248,18 @@ body{
 
 #desc{
     color: gray;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
 .id_data{
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: gray;
 
 }
 
 #location{
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-top: 1rem;
     display: flex;
     align-items: center;

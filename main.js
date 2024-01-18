@@ -9,7 +9,7 @@ async function getUserData(v) {
     const res = await fetch(`https://api.github.com/users/${v}`);
     const data = await res.json();
 
-    const name = data.name;
+    const name = data.name?data.name:'xyz';
     username = data.login
     const date = new Date(data.created_at)
     const arr = date.toString().split(" ")
@@ -22,6 +22,7 @@ async function getUserData(v) {
 
     document.getElementById('name').innerHTML = name
     document.getElementById('id').innerHTML = `@${username}`
+    document.getElementById('id').href = `https://github.com/${username}`
     document.getElementById('joined').innerHTML = `Joined : ${joined}`
     document.getElementById('desc').innerHTML = data.bio
     document.getElementById('repos').innerHTML = 'Repos : ' +data.public_repos
