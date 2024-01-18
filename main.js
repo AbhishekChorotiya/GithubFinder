@@ -3,48 +3,55 @@
 var current_page = 1;
 var max_page = 15;
 var repo_per_page = 10;
-var username = '';
+var username = "";
 async function getUserData(v) {
   try {
     const res = await fetch(`https://api.github.com/users/${v}`);
     const data = await res.json();
 
-    const name = data.name?data.name:'xyz';
-    username = data.login
-    const date = new Date(data.created_at)
-    const arr = date.toString().split(" ")
-    const joined = arr[2]+' '+arr[1]+', '+arr[3]
+    const name = data.name ? data.name : "xyz";
+    username = data.login;
+    const date = new Date(data.created_at);
+    const arr = date.toString().split(" ");
+    const joined = arr[2] + " " + arr[1] + ", " + arr[3];
 
     max_page = Math.ceil(data.public_repos / repo_per_page);
 
-    getData(username,1,10)
-    loadFooter()
+    getData(username, 1, 10);
+    loadFooter();
 
-    document.getElementById('name').innerHTML = name
-    document.getElementById('id').innerHTML = `@${username}`
-    document.getElementById('id').href = `https://github.com/${username}`
-    document.getElementById('joined').innerHTML = `Joined : ${joined}`
-    document.getElementById('desc').innerHTML = data.bio
-    document.getElementById('repos').innerHTML = 'Repos : ' +data.public_repos
-    document.getElementById('followers').innerHTML = 'Followers : '+data.followers
-    document.getElementById('following').innerHTML = 'Following : '+data.following
-    document.getElementById('location_name').textContent = data.location.split(',').join(', ')
-    document.getElementById('img').src = data.avatar_url
-
+    document.getElementById("name").innerHTML = name;
+    document.getElementById("id").innerHTML = `@${username}`;
+    document.getElementById("id").href = `https://github.com/${username}`;
+    document.getElementById("joined").innerHTML = `Joined : ${joined}`;
+    document.getElementById("desc").innerHTML = data.bio;
+    document.getElementById("repos").innerHTML = "Repos : " + data.public_repos;
+    document.getElementById("followers").innerHTML =
+      "Followers : " + data.followers;
+    document.getElementById("following").innerHTML =
+      "Following : " + data.following;
+    document.getElementById("location_name").textContent = data.location
+      .split(",")
+      .join(", ");
+    document.getElementById("img").src = data.avatar_url;
   } catch (e) {
     console.log("error in fetching : ", e);
   }
 }
 
-async function getData(username,page, perPage) {
+async function getData(username, page, perPage) {
   try {
     const reposContainer = document.querySelector(".repos");
-    reposContainer.innerHTML = "";
     current_page = page;
+    const loading_txt = document.createElement('div')
+    loading_txt.classList.add('loading')
+    loading_txt.innerHTML = 'Loading ...'
+    reposContainer.appendChild(loading_txt)
     const res = await fetch(
       `https://api.github.com/users/${username}/repos?page=${page}&per_page=${perPage}`
     );
     const data = await res.json();
+    reposContainer.innerHTML = "";
     console.log(data);
 
     // Your array
@@ -93,15 +100,15 @@ const button = document.querySelector(".search");
 console.log(button);
 
 button.addEventListener("click", () => {
-  getUserData(document.querySelector(".username").value)
-  console.log(document.querySelector(".username").value)
+  getUserData(document.querySelector(".username").value);
+  console.log(document.querySelector(".username").value);
 });
 
 const pageno = document.getElementsByClassName("pageno");
 
 function loadFooter() {
   const pagesDiv = document.querySelector(".pages");
-  pagesDiv.innerHTML = ''
+  pagesDiv.innerHTML = "";
   console.log(pagesDiv);
 
   const prevDiv = document.createElement("div");
@@ -123,7 +130,7 @@ function loadFooter() {
 
   for (let val of pageno) {
     val.addEventListener("click", () => {
-      getData(username,parseInt(val.innerHTML), repo_per_page);
+      getData(username, parseInt(val.innerHTML), repo_per_page);
     });
   }
 
@@ -131,10 +138,10 @@ function loadFooter() {
   const nextBtn = document.querySelector(".next");
 
   prevBtn.addEventListener("click", () => {
-    getData(username,Math.max(1, current_page - 1), repo_per_page);
+    getData(username, Math.max(1, current_page - 1), repo_per_page);
   });
 
   nextBtn.addEventListener("click", () => {
-    getData(username,Math.min(current_page + 1, max_page), repo_per_page);
+    getData(username, Math.min(current_page + 1, max_page), repo_per_page);
   });
 }
